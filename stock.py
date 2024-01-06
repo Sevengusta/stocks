@@ -12,8 +12,7 @@ def transform_data(stock_df_name, per='None', start=None, end=None):
     big_data = yf.Ticker(stock_df_name)
 
     stock_df = big_data.history(period=per, start=start, end=end).copy()
-    columns = ["Close", 'Volume', 'Open', 'High', 'Low', 'Dividends']
-    stock_df = pd.DataFrame(stock_df.columns)
+    stock_df.drop('Stock Splits', inplace=True, axis=1)
     stock_df['Yield'] = stock_df['Dividends'] / stock_df['Close']
     stock_df = stock_df.astype('float')
     
