@@ -14,7 +14,8 @@ def candle_figure(asset, selected_df='ITUB4.SA'):
         low=asset['Low'],
         close=asset['Close']) , row=1, col=1)
 
-    fig.add_trace(go.Scatter(x=asset.index, y=asset['MME15'], name='MME15', marker_color='rgba(0, 128, 255, 0.5)' ))
+    fig.add_trace(go.Scatter(x=asset.index, y=asset['EMA15'], name='EMA15', marker_color='rgba(0, 128, 255, 0.5)' ))
+    fig.add_trace(go.Scatter(x=asset.index, y=asset['SMA15'], name='SMA15', marker_color='rgba(128, 18, 0, 0.5)' ))
 
     fig.update_layout(
         template='plotly_white',
