@@ -52,6 +52,8 @@ def transform_data(stock_df_name, per='None', start=None, end=None):
     df['Return_Stock'] = df['Return_Stock'].cumsum()
     df['Return_CDI'] = df['Return_CDI'].cumsum()
     df['Return_Inflation'] = df['Return_Inflation'].cumsum()
+    df['MMS15'] = df['Close'].rolling(window = 15).mean()
+    df['MME15'] = df['Close'].ewm(span = 15).mean()
 
     # avoid missing values
     df = df.iloc[1:]
